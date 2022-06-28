@@ -1,10 +1,11 @@
 import express, { Application } from 'express';
 import cors from 'cors';
 
-import userRoutes from '../routes/usuarios.routes';
 import dbConenction from '../db/mongo.config';
 import fileUpload from 'express-fileupload';
 
+import userRoutes from '../routes/usuarios.routes';
+import authRoutes from '../routes/auth.routes';
 
 class Server {
     
@@ -41,7 +42,7 @@ class Server {
     routes() {
 
         this.app.use(this.paths.usuarios, userRoutes);
-
+        this.app.use(this.paths.auth, authRoutes);
     }
 
     middlewares() {
